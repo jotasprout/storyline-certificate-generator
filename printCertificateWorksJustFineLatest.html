@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>Print Certificate</title>
+</head>
+<body>
+	<script type="text/javascript">
+	
+		/*Get string from URL*/
+		var learner_info = window.location.href.split('?print=')[1];
+		
+		/*Split string into variables*/
+		var first_name = learner_info.split('&')[0];		
+		var last_name = learner_info.split('&')[1];
+		var course_name = learner_info.split('&')[2];
+		var cert_date = learner_info.split('&')[3];
+
+		/*Rounded border*/
+		document.write('<div id="cert"><img src="courseCert.png"></div>');
+		document.write('<div id="position" style="width:720px;height:540px;padding:0px;border:0px outset gray;">');
+		
+		/*Content*/
+		document.write('<div class="bigText" style="font-weight: bold">&nbsp;</div>');
+		document.write('<div class="bigText">&nbsp;</div>');
+		document.write('<div class="bigText">' + unescape(first_name) + '&nbsp;' + unescape(last_name) + '</div>');
+		document.write('<div class="smallText">&nbsp;</div>');
+		document.write('<div class="bigText">' + unescape(course_name) + '</div>');
+		document.write('<div class="smallText">' + unescape(cert_date) + '</div>');
+		document.write('</div>');
+
+		/*Send print request to browser if possible*/
+		window.onload = function() { window.print(); }
+
+	</script>
+
+<style type="text/css">
+
+#cert{
+	z-index: 1;
+	position: absolute;
+}
+
+.bigText{
+	overflow:auto;
+	font-size:36px;
+	font-family: Serif;
+	margin-top: 27px;
+	text-align: center;
+}
+
+.smallText{
+	overflow:auto;
+	font-size:18px;
+	font-family: Sans-Serif;
+	margin-top: 27px;
+	text-align: center;
+}
+#position{
+	z-index: 2;
+	display: table-cell;
+	vertical-align: middle;
+	position: absolute;	
+}
+
+</style>
+
+</body>
+
+
+
+</html>
